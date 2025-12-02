@@ -1,0 +1,488 @@
+.MenuBar {
+    position: fixed;
+    top: 80px;
+    left: 20px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 12px;
+    border-radius: 25px;
+    background: rgba(98, 98, 98, 0.1);
+    backdrop-filter: blur(5px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateX(-40px) scale(0.97);
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+        backdrop-filter 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.MenuBarActive {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: all;
+    backdrop-filter: blur(18px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.NavBarLineRight {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 95%;
+    height: 90%;
+    border-bottom: 0.5px solid rgba(107, 107, 107, 0.1);
+    border-right: 0.5px solid  rgba(125, 125, 125, 0.1);
+    border-bottom-right-radius: 25px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.NavBarLineLeft {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 95%;
+    height: 90%;
+    border-top: 0.5px solid rgba(125, 125, 125, 0.1);
+    border-left: 0.5px solid rgba(107, 107, 107, 0.1);
+    border-top-left-radius: 25px;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+
+.MenuBarActive .NavBarLineLeft,
+.MenuBarActive .NavBarLineRight {
+    border-color: rgba(255, 255, 255, 0.18);
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.08));
+}
+
+.PagesWrapper {
+    position: relative;
+    width: 360px;
+    height: 260px;
+    overflow: hidden;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.Pages1 {
+    width: 50vw;
+    height: 60vh;
+}
+
+.Pages2 {
+    width: 370px;
+    height: 360px;
+}
+
+.Pages3 {
+    width: 700px;
+    height: 420px;
+}
+
+
+
+
+.slideOut_right {
+    transform: translateX(-100%);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slideIn_right {
+    transform: translateX(100%);
+    animation: inFromRight 0.36s forwards ease;
+    width: 100%;
+    height: 100%;
+}
+
+.slideOut_left {
+    transform: translateX(100%);
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slideIn_left {
+    transform: translateX(-100%);
+    animation: inFromLeft 0.36s forwards ease;
+    width: 100%;
+    height: 100%;
+}
+
+@keyframes inFromRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes inFromLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+
+.CloseBtn {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 6;
+    background: rgba(0, 0, 0, 0.25);
+    border: 0;
+    color: #fff;
+    padding: 6px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.CloseBtn:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+}
+
+
+.Page {
+    width: 100%;
+    height: 100%;
+    color: #eaeaea;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 12px;
+
+    transition: all 0.35s ease;
+}
+
+
+.PageTitle {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.PageSubtitle {
+    font-size: 0.82rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.PageContent {
+    display: flex;
+    gap: 12px;
+    align-items: stretch;
+}
+
+.MapPlaceholder {
+    flex: 1 1 60%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    min-height: 120px;
+}
+
+.NodeList {
+    flex: 1 1 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 90px;
+}
+
+.NodeItem {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 6px 8px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+}
+
+.ActionRow {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.Btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 0;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.Btn:hover {
+    background: rgba(100, 150, 255, 0.4);
+    box-shadow: 0 0 14px rgba(75, 132, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+.StatCard {
+    flex: 1 1 0;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.StatValue {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.ProfileCard {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.Avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6cf, #49f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+}
+
+
+.Header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.Header::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: 45px;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #57d8ff, #6a5cff);
+    box-shadow: 0 0 12px rgba(110, 150, 255, 0.5);
+}
+
+.Dots {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.Dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    transition: all 0.25s ease;
+}
+
+.DotActive {
+    background: linear-gradient(90deg, #57d8ff, #6a5cff);
+    transform: scale(1.6);
+    box-shadow: 0 0 12px rgba(110, 150, 255, 0.5);
+}
+
+
+.CloseBtn {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    box-shadow: 0 6px 20px rgba(10, 20, 40, 0.25);
+    color: #fff;
+    padding: 0;
+}
+
+.CloseBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(10, 20, 40, 0.3);
+}
+
+
+.PageContainer .Page {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border-radius: 12px;
+    padding: 12px;
+}
+
+
+.Btn {
+    background: linear-gradient(90deg, #5fd1ff22, #7a5cff22);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(6px);
+}
+
+@media (max-width: 420px) {
+    .MenuBar {
+        left: 12px;
+        top: 64px;
+    }
+
+    .Page {
+        width: 260px;
+        min-height: 180px
+    }
+}
+
+/* bubble under navbar */
+.Bubble {
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 8px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7ad1ff, #6b5cff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 12px 30px rgba(75, 95, 255, 0.18);
+    transform: translateX(-10px) scale(0.8) rotate(-8deg);
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.BubbleEnter {
+    animation: bubbleIn 420ms cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+.BubbleExit {
+    animation: bubbleOut 320ms ease forwards;
+}
+
+@keyframes bubbleIn {
+    0% {
+        transform: translateX(-20px) scale(0.6) rotate(-18deg);
+        opacity: 0
+    }
+
+    60% {
+        transform: translateX(6px) scale(1.05) rotate(6deg);
+        opacity: 1
+    }
+
+    100% {
+        transform: translateX(0) scale(1) rotate(0);
+        opacity: 1
+    }
+}
+
+@keyframes bubbleOut {
+    from {
+        transform: translateX(0) scale(1);
+        opacity: 1
+    }
+
+    to {
+        transform: translateX(-10px) scale(0.6);
+        opacity: 0
+    }
+}
+
+.BubbleClose {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    font-size: 1.05rem;
+    cursor: pointer;
+}
+
+.NodeStatus {}
+
+/* Grid карточек узлов */
+.NodeGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.NodeCard {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.NodeCardHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.NodeCardBody {
+    font-size: 0.86rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.StatusDot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    flex: 0 0 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.SmallLabel {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+@media (max-width: 480px) {
+    .NodeGrid {
+        grid-template-columns: 1fr;
+    }
+}
