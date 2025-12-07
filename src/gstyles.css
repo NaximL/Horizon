@@ -1,20 +1,49 @@
-* {
+/*Світла тема*/
+:root {
+    --BlurViewBack: #fff;
+    --BlurViewBackWhite: rgba(255, 255, 255, 0.005);
+    --ColorText: #222222;
+    --ColorActive: #b3b3b3;
+    --ColorActiveBlue: linear-gradient(135deg,
+            rgba(120, 150, 180, 0.8),
+            rgba(95, 125, 160, 0.85));
+
+
+}
+
+/*#18a3db;*/
+
+body {
+    background-color: #f7f7fa;
+    color: var(--ColorText);
     font-family: "Montserrat", sans-serif;
 }
 
+.BlurView {
+    background-color: var(--BlurViewBack);
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+}
 
+.ColorText {
+    color: var(--ColorText);
+}
 
-body {
-    background-color: #181c27; 
-    background-image: radial-gradient(
-        circle at 30% 20%,
-        rgba(100, 130, 255, 0.08),
-        transparent 60%
-    ),
-    radial-gradient(
-        circle at 80% 70%,
-        rgba(70, 240, 255, 0.05),
-        transparent 60%
-    );
-    color: #eaeaea;
+@media (prefers-color-scheme: dark) {
+
+    /*Темна тема*/
+    :root {
+        --BlurViewBack: #1C1C1E;
+        --BlurViewBackWhite: rgba(28, 28, 30, 0.4);
+        --ColorText: #eaeaea;
+    }
+
+    body {
+        background-color: #010101;
+        /* background-image:
+            radial-gradient(circle at 30% 20%, rgba(100, 130, 255, 0.08), transparent 60%),
+            radial-gradient(circle at 80% 70%, rgba(70, 240, 255, 0.05), transparent 60%); */
+        color: var(--ColorText);
+    }
 }

@@ -14,17 +14,16 @@ type Props = {
   MenuVisible: boolean;
 };
 
-const NavBar = ({ SetMenuNum, SetMenuVisible, MenuVisible: _MenuVisible }: Props) => {
+const NavBar = ({ SetMenuNum, SetMenuVisible, MenuVisible }: Props) => {
   const [bubbleFor, setBubbleFor] = React.useState<number | null>(null);
 
   useEffect(() => {
-    setBubbleFor(_MenuVisible ? 1 : null);
-  }, [_MenuVisible])
+    setBubbleFor(MenuVisible ? 1 : null);
+  }, [MenuVisible]);
 
   const handleClick = (index: number) => {
     SetMenuNum(index + 1);
     SetMenuVisible(true);
-
 
     try {
       const key = `nav_bubble_shown_${index + 1}`;
@@ -37,42 +36,28 @@ const NavBar = ({ SetMenuNum, SetMenuVisible, MenuVisible: _MenuVisible }: Props
   };
 
   return (
-    <div className={styles.NavBar}>
-      <div className={styles.NavBarLineLeft} />
-      <div className={styles.NavBarLineRight} />
-
+    <div className={`${styles.NavBar} BlurView`}>
 
       <div
         id="bubble"
-        className={`${styles.Bubble} ${bubbleFor === 1 ? styles.Visible : ""}`}
+        className={`${styles.BubbleClose} BlurView ${bubbleFor === 1 ? styles.Visible : ""}`}
+        onClick={() => {
+          SetMenuVisible(false);
+          setBubbleFor(null);
+        }}
+        aria-label="close menu"
       >
-        <div className={styles.NavBarLineLeftCircle} />
-        <div className={styles.NavBarLineRightCircle} />
-        <button
-          className={styles.BubbleClose}
-          onClick={() => {
-            SetMenuVisible(false);
-            setBubbleFor(null);
-          }}
-          aria-label="close menu"
-        >
-          ✕
-        </button>
+        ✕
       </div>
-
 
       {navItems.map((item, index) => (
         <div
           key={index}
           onClick={() => handleClick(index)}
           className={styles.NavItem}
-          style={{ position: "relative" }}
         >
           <span>{item.emoji}</span>
           <div>{item.label}</div>
-
-
-
         </div>
       ))}
     </div>

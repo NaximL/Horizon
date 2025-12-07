@@ -2,15 +2,20 @@ import { useEffect, useState } from "react";
 import NavBar from "./components/NavBar/NavBar";
 import StatsBar from "./components/StatsBar/StatsBar";
 import MenuBar from "./components/MenuBar/MenuBar";
-import NodeBase from "./components/NodeBase/NodeBase";
+import NodeBase from "./components/Maps/3dNodes/NodeBase";
 import LoadSpin from "./components/LoadSpin/LoadSpin";
 import { generateNodes } from "./utils/data";
 import useNodesStore from "./store/NodesStore";
+import MapToggle from "./components/MapToggle/MapToggle";
+import Maps from "./components/Maps/Maps/Maps";
+import Setup from "./components/Setup/Setup";
 
 export default function App() {
 
-  const SERVER_URL = "http://192.168.1.12";
+  const SERVER_URL = "192.168.4.1";
   const [Load, SetLoad] = useState(false);
+  const [IsSetup, SetIsSetup] = useState(true);
+
   const [Binding, SetBinding] = useState(false);
   const [Connection, SetConnection] = useState(false);
   const [IP, _SetIP] = useState(SERVER_URL);
@@ -19,13 +24,15 @@ export default function App() {
   const [MenuVisible, SetMenuVisible] = useState<boolean>(false);
   const { SetNodes } = useNodesStore();
 
-
+  const [mapMode, setMapMode] = useState<"3d" | "google">(() => {
+    return (localStorage.getItem("mapMode") as "3d" | "google") || "3d";
+  });
   // useEffect(() => {
   //   if (Binding) {
 
   //   }
   // }, [Binding]);
-  let mounted = true; 
+  let mounted = true;
   const fetchNodes = async () => {
     const nodes: any = await generateNodes({
       SERVER_URL,
@@ -34,11 +41,10 @@ export default function App() {
       comp: true,
     });
     console.log(nodes)
-
-    if (mounted) {
-      SetNodes(nodes);
-      SetSensors(nodes);
-    }
+    // if (mounted) {
+    SetNodes(nodes);
+    SetSensors(nodes);
+    // }
   };
   useEffect(() => {
     fetchNodes();
@@ -51,15 +57,33 @@ export default function App() {
 
   return (
     <>
+      {IsSetup && <Setup visible={false} onClose={() => { }} />}
+
       <NavBar
         MenuNum={MenuNum}
         SetMenuNum={SetMenuNum}
         SetMenuVisible={SetMenuVisible}
         MenuVisible={MenuVisible}
-
       />
-      <StatsBar Connection={Connection} IP={IP} bind={Binding} OnRefresh={() => { SetLoad(true); fetchNodes() }} />
-      <NodeBase nodes={Sensors} />
+      <MapToggle mode={mapMode} setMode={setMapMode} />
+
+      <StatsBar
+        Connection={Connection}
+        IP={IP}
+        bind={Binding}
+        OnRefresh={() => {
+          SetLoad(true);
+          fetchNodes();
+        }} />
+
+      {
+        mapMode === "3d" ?
+          <NodeBase nodes={Sensors} />
+          :
+          <Maps nodes={Sensors} />
+      }
+
+
       <LoadSpin Load={Load} />
       <MenuBar
         visible={MenuVisible}

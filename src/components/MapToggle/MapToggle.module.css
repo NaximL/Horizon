@@ -1,0 +1,60 @@
+.ToggleWrapper {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    width: 180px;
+    height: 43px;
+    /* padding: 4px; */
+
+    padding: 4px;
+    border-radius: 40px;
+    /* background: rgba(255, 255, 255, 0.07); */
+    /* backdrop-filter: blur(12px); */
+    /* box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25); */
+    z-index: 2;
+}
+
+.ToggleBtn {
+    flex: 1;
+    text-align: center;
+    z-index: 2;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--ColorText);
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.25s ease;
+}
+
+.ToggleBtn:hover {
+    color: var(--ColorActive);
+}
+
+.Active {
+    color: rgb(255, 255, 255);
+}
+
+.Slider {
+    position: absolute;
+    width: 50%;
+    height: 85%;
+    border-radius: 30px;
+
+    background: linear-gradient(135deg,
+            rgba(120, 150, 180, 0.8),
+            rgba(95, 125, 160, 0.85));
+
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    transition: transform 0.3s ease;
+}
+
+.Left {
+    transform: translateX(0);
+}
+
+.Right {
+    transform: translateX(90%);
+}

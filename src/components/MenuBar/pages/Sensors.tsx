@@ -74,60 +74,50 @@ const NodeMap: React.FC = ({ Menu }: any) => {
 
     useEffect(() => {
         load();
-
     }, [Menu]);
-    return loading ?
-        <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)" }} >
-            <LoadSpin Load={loading} one={true} />
-        </div >
-        :
-
-        <div className={styles.Page}>
+    return <div className={styles.Page}>
+        <div className={styles.PageContent}>
 
 
-
-            <div className={styles.PageContent}>
-
-
-                <div style={{ flex: "1 1 40%" }}>
-                    {error && <div className={styles.NodeItem}>Error: {error}</div>}
+            <div style={{ flex: "1 1 40%" }}>
+                {error && <div className={styles.NodeItem}>Error: {error}</div>}
 
 
-                    <div className={styles.NodeGrid}>
-                        {Nodes.slice()
-                            .sort((a, b) => Number(a.ID) - Number(b.ID))
-                            .map((n: NodePoint) => {
-                                const neon = getNeonStyle(n.status);
-                                const soilPercent = Math.min(100, Math.max(0, Math.round((n.soilHumidity / 1023) * 100)));
-                                return (
-                                    <div key={n.ID} className={styles.NodeCard}>
-                                        <div className={styles.NodeCardHeader}>
-                                            <div style={{ fontWeight: 700, fontSize: n.isHub ? 18 : 15 }}>
-                                                {n.isHub ? "Hub" : `Sensor ${n.ID}`}
-                                            </div>
-                                            <div className={styles.StatusDot} style={neon} title={`Status: ${n.status}`} />
+                <div className={styles.NodeGrid}>
+                    {Nodes.slice()
+                        .sort((a, b) => Number(a.ID) - Number(b.ID))
+                        .map((n: NodePoint) => {
+                            const neon = getNeonStyle(n.status);
+                            const soilPercent = Math.min(100, Math.max(0, Math.round((n.soilHumidity / 1023) * 100)));
+                            return (
+                                <div key={n.ID} className={styles.NodeCard}>
+                                    <div className={styles.NodeCardHeader}>
+                                        <div style={{ fontWeight: 700, fontSize: n.isHub ? 18 : 15 }}>
+                                            {n.isHub ? "Hub" : `Sensor ${n.ID}`}
                                         </div>
-
-                                        <div className={styles.NodeCardBody}>
-                                            {n.isHub ? (
-                                                <div className={styles.SmallLabel}>Hub device</div>
-                                            ) : (
-                                                <>
-                                                    <div className={styles.SmallLabel}><b>ID:</b> {n.ID}</div>
-                                                    <div className={styles.SmallLabel}><b>Темп:</b> {n.dsTemperature ?? "—"} °C</div>
-                                                    <div className={styles.SmallLabel}><b>Давл:</b> {n.bmpPressure ?? "—"}</div>
-                                                    <div className={styles.SmallLabel}><b>Вологість ґрунту:</b> {soilPercent}%</div>
-                                                    <div className={styles.SmallLabel}><b>Кординати:</b> X:{n.x ?? '-'} Y:{n.y ?? '-'} Z:{n.z ?? '-'}</div>
-                                                </>
-                                            )}
-                                        </div>
+                                        <div className={styles.StatusDot} style={neon} title={`Status: ${n.status}`} />
                                     </div>
-                                );
-                            })}
-                    </div>
+
+                                    <div className={styles.NodeCardBody}>
+                                        {n.isHub ? (
+                                            <div className={styles.SmallLabel}><b>Hub device</b></div>
+                                        ) : (
+                                            <>
+                                                <div className={styles.SmallLabel}><b>ID:</b> {n.ID}</div>
+                                                <div className={styles.SmallLabel}><b>Темп:</b> {n.dsTemperature ?? "—"} °C</div>
+                                                <div className={styles.SmallLabel}><b>Давл:</b> {n.bmpPressure ?? "—"}</div>
+                                                <div className={styles.SmallLabel}><b>Вологість ґрунту:</b> {soilPercent}%</div>
+                                                <div className={styles.SmallLabel}><b>Кординати:</b> X:{n.x ?? '-'} Y:{n.y ?? '-'} Z:{n.z ?? '-'}</div>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                            );
+                        })}
                 </div>
             </div>
-        </div >
+        </div>
+    </div >
 };
 
 export default NodeMap;

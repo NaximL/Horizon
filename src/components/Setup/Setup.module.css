@@ -1,0 +1,253 @@
+.SetupBackdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(12px);
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.SetupModal {
+    background: rgb(30, 30, 30);
+    backdrop-filter: blur(18px) saturate(120%);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    border-radius: 20px;
+    padding: 20px 22px;
+    height: 520px;
+    width: 420px;
+    max-width: 92%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    position: relative;
+}
+
+.Title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ColorText);
+    text-align: center;
+    margin: 4px 0 8px 0w;
+}
+
+.StepsViewport {
+    position: relative;
+    flex: 1 1 auto;
+    min-height: 340px;
+    margin-top: 6px;
+}
+
+.Step {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 8px 6px;
+    transition: transform 420ms cubic-bezier(.2, .9, .25, 1), opacity 320ms ease, filter 420ms ease;
+    will-change: transform, opacity;
+}
+
+.Left {
+    transform: translate3d(-110%, 0, 0) scale(.98);
+    opacity: 0;
+    filter: blur(1px) saturate(.95);
+    pointer-events: none;
+}
+
+.Right {
+    transform: translate3d(110%, 0, 0) scale(.98);
+    opacity: 0;
+    filter: blur(1px) saturate(.95);
+    pointer-events: none;
+}
+
+.Center {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+    pointer-events: all;
+}
+
+.Input {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--ColorText);
+    font-size: 0.95rem;
+    backdrop-filter: blur(8px);
+    margin-top: 6px;
+}
+
+.FieldLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 600;
+    color: var(--ColorText);
+}
+
+.CheckboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ThemeButtons {
+    display: flex;
+    gap: 10px;
+}
+
+
+.ThemeBtn {
+    flex: 1;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--ColorText);
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.ActiveBtn {
+    background: linear-gradient(135deg, rgba(120, 150, 255, 0.95), rgba(95, 125, 255, 0.95));
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(95, 125, 255, 0.18), 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.ButtonRow {
+    display: flex;
+    justify-content: space-around;
+    gap: 12px;
+
+    align-items: center;
+}
+
+.LeftControls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 50px;
+}
+
+.RightControls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    width: 50px;
+
+}
+
+.PrimaryBtn {
+    /* padding: 10px 16px; */
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.PrimaryBtn:active {
+    transform: translateY(1px);
+}
+
+.SecondaryBtn {
+    /* padding: 8px 14px; */
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.SaveBtn {
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: none;
+    background: linear-gradient(90deg, #2ecc71, #27ae60);
+    color: #fff;
+    font-weight: 700;
+}
+
+.LinkBtn {
+    background: none;
+    border: none;
+    color: #80a0ff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+.HubList {
+    list-style: none;
+    padding: 0;
+    margin: 6px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.HubBtn {
+    padding: 8px 12px;
+    border-radius: 14px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--ColorText);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.HubBtn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.StepInner {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.SectionTitle {
+    font-weight: 700;
+    color: var(--ColorText);
+    margin-bottom: 6px;
+}
+
+.CheckboxLabel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 8px 10px;
+    border-radius: 10px;
+}
+
+.CheckboxText {
+    font-weight: 600;
+    color: var(--ColorText);
+}
+
+.Helper {
+    margin-top: 8px;
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.9rem;
+}

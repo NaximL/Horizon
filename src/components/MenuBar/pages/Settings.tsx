@@ -1,90 +1,100 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../MenuBar.module.css";
 
+type ThemeMode = "system" | "dark" | "light";
+type StartMode = "3d" | "maps";
+
 const Settings: React.FC = () => {
-  const [darkMode, setDarkMode] = useState(true);
-  const [showGrid, setShowGrid] = useState(true);
-  const [autoRefresh, setAutoRefresh] = useState(false);
-  const [notifications, setNotifications] = useState(true);
+  const [theme, setTheme] = useState<ThemeMode>("system");
+  const [startMode, setStartMode] = useState<StartMode>("3d");
+  const [ip, setIp] = useState("192.168.0.100");
+
+  useEffect(() => {
+    // если тема как в системе
+    if (theme === "system") {
+      const systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = systemDark ? "dark" : "light";
+    } else {
+      document.documentElement.dataset.theme = theme;
+    }
+  }, [theme]);
+
+  const apply = () => {
+    localStorage.setItem("theme", theme);
+    localStorage.setItem("startMode", startMode);
+    localStorage.setItem("ip", ip);
+
+    alert("Settings saved ✅");
+  };
+
+  const reset = () => {
+    setTheme("system");
+    setStartMode("3d");
+    setIp("192.168.0.100");
+    localStorage.clear();
+  };
 
   return (
-    <div className={styles.Page}>
-      {/* Заголовок */}
-      <div className={styles.PageHeader}>
-        <div>
-          <div className={styles.PageTitle}>Settings</div>
-          <div className={styles.PageSubtitle}>Customize your Horizon experience</div>
+    <div className={`${styles.Page}`}>
+
+      <div className={styles.SettingsGrid}>
+
+        {/* THEME */}
+        <div className={styles.SettingsTile}>
+          <div className={styles.TileIcon}>🎨</div>
+          <div className={styles.TileTitle}>Theme</div>
+          <div className={styles.ThemeGroup}>
+            {["system", "dark", "light"].map(m => (
+              <button
+                key={m}
+                className={`${styles.ThemeBtn} ${theme === m ? styles.ActiveBtn : ""}`}
+                onClick={() => setTheme(m as ThemeMode)}
+              >
+                {m === "system" ? "System" : m === "dark" ? "Dark" : "Light"}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* START MODE */}
+        <div className={styles.SettingsTile}>
+          <div className={styles.TileIcon}>🚀</div>
+          <div className={styles.TileTitle}>Start mode</div>
+          <div className={styles.ThemeGroup}>
+            {["3d", "maps"].map(m => (
+              <button
+                key={m}
+                className={`${styles.ThemeBtn} ${startMode === m ? styles.ActiveBtn : ""}`}
+                onClick={() => setStartMode(m as StartMode)}
+              >
+                {m === "3d" ? "3D Mode" : "Maps"}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        
+        <div className={`${styles.SettingsTile} ${styles.Full}`}>
+          <div className={styles.TileIcon}>🌐</div>
+          <div className={styles.TileTitle}>Server IP</div>
+          <input
+            value={ip}
+            onChange={e => setIp(e.target.value)}
+            placeholder="192.168.0.1"
+            className={styles.Input}
+          />
+        </div>
+
       </div>
 
-      {/* Основные настройки */}
-      <div style={{ display: "flex", flexDirection: "column", gap: 16, marginTop: 12 }}>
-        {[
-          { label: "🌙 Dark Mode", state: darkMode, setter: setDarkMode },
-          { label: "🧩 Show Grid", state: showGrid, setter: setShowGrid },
-          { label: "🔄 Auto Refresh", state: autoRefresh, setter: setAutoRefresh },
-          { label: "🔔 Notifications", state: notifications, setter: setNotifications },
-        ].map((item, index) => (
-          <label
-            key={index}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-              padding: "12px 16px",
-              borderRadius: "12px",
-              background: "linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01))",
-              boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-            }}
-          >
-            <span className={styles.PageSubtitle}>{item.label}</span>
-            <div
-              onClick={() => item.setter(!item.state)}
-              style={{
-                width: 42,
-                height: 24,
-                borderRadius: 12,
-                background: item.state
-                  ? "linear-gradient(90deg, #57d8ff, #6a5cff)"
-                  : "rgba(255,255,255,0.1)",
-                position: "relative",
-                transition: "all 0.3s ease",
-              }}
-            >
-              <div
-                style={{
-                  width: 20,
-                  height: 20,
-                  borderRadius: "50%",
-                  background: "#fff",
-                  position: "absolute",
-                  top: 2,
-                  left: item.state ? 20 : 2,
-                  transition: "all 0.3s ease",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
-                }}
-              />
-            </div>
-          </label>
-        ))}
+      <div className={styles.TileFooter}>
+        
+          <button className={styles.Btn} onClick={apply}>Apply</button>
+
+        
+
       </div>
 
-      {/* Дополнительные действия */}
-      <div className={styles.ActionRow} style={{ marginTop: 24 }}>
-        <button className={styles.Btn} style={{ flex: 1, marginRight: 8 }}>
-          💾 Save
-        </button>
-        <button className={styles.Btn} style={{ flex: 1, marginLeft: 8 }}>
-          ↩ Reset
-        </button>
-      </div>
-
-      {/* Информация */}
-      <div style={{ marginTop: 20, fontSize: "0.82rem", color: "rgba(255,255,255,0.6)" }}>
-        ⚡ Horizon v1.2 — Your smart network dashboard
-      </div>
     </div>
   );
 };

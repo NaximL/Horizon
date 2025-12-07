@@ -18,9 +18,34 @@ type Props = {
   comp?: boolean;
 }
 
-
+const P: NodePoint[] = [
+  {
+    "isHub": false,
+    "ID": "2",
+    "bmpTemperature": "0",
+    "bmpPressure": "0",
+    "soilHumidity": 1023,
+    "dsTemperature": "24.75",
+    "x": 20,
+    "y": 5,
+    "z": 20,
+    "status": 0
+  },
+  {
+    "isHub": false,
+    "ID": "1",
+    "bmpTemperature": "0",
+    "bmpPressure": "0",
+    "soilHumidity": 1023,
+    "dsTemperature": "24.75",
+    "x": -30,
+    "y": 0,
+    "z": 2,
+    "status": 0
+  }
+]
 export async function fetchData(SERVER_URL: string, endpoint: string) {
-  const res = await fetch(`${SERVER_URL}/${endpoint}`, {
+  const res = await fetch(`http://${SERVER_URL}/${endpoint}`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   });
@@ -30,6 +55,7 @@ export async function fetchData(SERVER_URL: string, endpoint: string) {
     throw new Error(data?.message || `Помилка при запиті на:${endpoint}`);
   }
   return data;
+  return
 }
 export async function generateNodes({ SERVER_URL, setLoad, setConection, comp }: Props): Promise<NodePoint[]> {
   let d: NodePoint[] = [{
@@ -47,14 +73,14 @@ export async function generateNodes({ SERVER_URL, setLoad, setConection, comp }:
 
   try {
     const nodes = await fetchData(SERVER_URL, "getdata");
-
+    // const nodes = { data: P };
     // if (comp) {
     //   d[0].bmpPressure = nodes[0]?.bmpPressure
     // }
     const hubPressure = parseFloat(d[0].bmpPressure);
 
     const sensitivityMultiplier = 8.43;
-    
+
     d = d.concat(nodes.data.map((n: any, i: number) => {
       const nodePressure = parseFloat(n.bmpPressure);
       const height = (hubPressure - nodePressure) * sensitivityMultiplier;

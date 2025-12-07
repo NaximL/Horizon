@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Line, Html, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import type { NodePoint } from "../../utils/data";
+import type { NodePoint } from "../../../utils/data";
 import { AxesHelper, GridHelper } from "three";
+import useTheme from "../../../hooks/useDark";
+import styles from "./NodeBase.module.css";
 
 const statusColors: Record<string, string> = {
     0: "rgb(0, 206, 0)",
@@ -38,8 +40,7 @@ const statusNum: Record<string, string> = {
 
 export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
     const [hoveredNodeID, setHoveredNodeID] = useState<string | null>(null);
-    
-
+    const { isDark } = useTheme();
 
     const hoveredNode = hoveredNodeID ? nodes.find(n => n.ID === hoveredNodeID) || null : null;
 
@@ -47,8 +48,16 @@ export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
         <div style={{ width: "100vw", height: "100vh" }}>
             <Canvas camera={{ position: [50, 80, 220], fov: 60 }}>
                 <ambientLight intensity={0.5} />
-                {/* <primitive object={new AxesHelper(50)} /> */}
-                <primitive object={new GridHelper(200, 20, "white", "gray")} />
+                <primitive
+                    object={
+                        new GridHelper(
+                            200,
+                            20,
+                            isDark ? "#ffffff" : "#000000",
+                            isDark ? "#454545" : "#9f9f9f"
+                        )
+                    }
+                />
 
 
                 {nodes.map((node) => (
@@ -82,7 +91,7 @@ export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
                         <Line
                             key={`line-${node.ID}-${k}`}
                             points={[[node.x, node.y, node.z], [n.x, n.y, n.z]]}
-                            color="white"
+                            color={isDark ? "#ffffff" : "#000000"}
                             lineWidth={1}
                         />
                     ));
@@ -92,7 +101,7 @@ export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
 
                     <Html position={[hoveredNode.x, hoveredNode.y + 5, hoveredNode.z]} center>
                         {hoveredNode.isHub ?
-                            <div style={{ ...popupStyle }}>
+                            <div className={styles.Modal} style={{ ...popupStyle }}>
                                 <div style={{ marginBottom: "4px" }}>
                                     <div><b style={{ fontSize: 24 }}>Хаб</b></div>
                                     <b style={{ fontSize: 16 }}>Стан:</b>{" "}
@@ -103,7 +112,7 @@ export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
                                 </div>
                             </div>
                             :
-                            <div style={{ ...popupStyle }}>
+                            <div className={styles.Modal} style={{ ...popupStyle }}>
                                 <div style={{ marginBottom: "4px" }}>
                                     <b>Стан:</b>{" "}
                                     <span style={{ color: statusColors[hoveredNode.status] }}>
@@ -129,7 +138,13 @@ export default function NodeBase({ nodes }: { nodes: NodePoint[] }) {
                     </Html>
                 )}
 
-                <OrbitControls />
+                <OrbitControls
+                    // enablePan={false}
+                    // enableZoom={true}
+                    minDistance={80}
+                    maxDistance={350}
+                    maxPolarAngle={Math.PI - Math.PI / 3}
+                />
             </Canvas>
         </div>
     );
@@ -140,9 +155,7 @@ const popupStyle: React.CSSProperties = {
     left: 10,
     top: 10,
     minWidth: "200px",
-    backgroundColor: "rgba(0,0,0,0.7)",
     backdropFilter: "blur(6px)",
-    color: "white",
     padding: "12px 16px",
     borderRadius: "14px",
     fontSize: "13px",
