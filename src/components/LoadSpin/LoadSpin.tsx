@@ -1,6 +1,6 @@
 import style from "./LoadSpin.module.css"
 
-const LoadSpin = ({ Load, one }: { Load: boolean, one?: boolean}) => {
+const LoadSpin = ({ Load, one, size }: { Load: boolean, one?: boolean, size?: number }) => {
 
     setTimeout(() => {
         const load = document.getElementById('Loadspin')
@@ -12,11 +12,15 @@ const LoadSpin = ({ Load, one }: { Load: boolean, one?: boolean}) => {
         Load &&
         <>
             {one ?
-                <div className={style.LoadSpin}></div>
+
+                <div className={style.ldsRing}>
+                    <div></div><div></div><div></div><div></div>
+                </div>
+
                 : (
                     <>
                         <div id="Loadspin" className={style.LoadSpinConteiner}>
-                            <div className={[style.LoadSpin, one && style.LoadSpins].join('')}></div>
+                            <div className={style.ldsRing}><div></div><div></div><div></div><div></div></div>
                         </div>
                         <div className={style.LoadBack} />
                     </>

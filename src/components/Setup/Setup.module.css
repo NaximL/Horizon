@@ -1,253 +1,968 @@
-.SetupBackdrop {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(12px);
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 999;
+
+.Backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  animation: fadeIn 300ms ease-out;
 }
 
-.SetupModal {
-    background: rgb(30, 30, 30);
-    backdrop-filter: blur(18px) saturate(120%);
-    -webkit-backdrop-filter: blur(18px) saturate(120%);
-    border-radius: 20px;
-    padding: 20px 22px;
-    height: 520px;
-    width: 420px;
-    max-width: 92%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.02);
-    overflow: hidden;
-    position: relative;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0)
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(14px)
+  }
 }
 
-.Title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--ColorText);
-    text-align: center;
-    margin: 4px 0 8px 0w;
+
+.Modal {
+  background: var(--BlurViewBack);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-radius: 24px;
+  width: 520px;
+  max-width: 94vw;
+  height: 640px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--CardBorder);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: slideUp 400ms cubic-bezier(.25, .8, .25, 1);
 }
 
-.StepsViewport {
-    position: relative;
-    flex: 1 1 auto;
-    min-height: 340px;
-    margin-top: 6px;
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(.97)
+  }
+
+  to {
+    opacity: 1;
+    transform: none
+  }
 }
 
-.Step {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding: 8px 6px;
-    transition: transform 420ms cubic-bezier(.2, .9, .25, 1), opacity 320ms ease, filter 420ms ease;
-    will-change: transform, opacity;
+
+.Header {
+  padding: 20px 24px 14px;
+  border-bottom: 1px solid var(--CardBorder);
+  flex-shrink: 0;
+}
+
+.HeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
+.HeaderLogo {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.HeaderTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ColorText)
+}
+
+.HeaderDesc {
+  font-size: .75rem;
+  color: var(--ColorTextMuted);
+  margin-top: 2px
+}
+
+
+.StepIndicators {
+  display: flex;
+  padding: 16px 24px 0;
+  position: relative;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-shrink: 0;
+}
+
+.StepConnector {
+  flex: 1;
+  height: 2px;
+  background: var(--CardBorder);
+  margin-top: 16px;
+  border-radius: 2px;
+  position: relative;
+  min-width: 20px;
+}
+
+.StepConnectorDone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+}
+
+.StepDot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1000;
+  position: relative;
+
+}
+
+.StepDotIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: var(--CardBgSolid);
+  border: 1px solid var(--CardBorder);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  color: var(--ColorTextMuted);
+  transition: all .3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.StepDotActive .StepDotIcon {
+  background: var(--dot-color);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--dot-color) 40%, transparent);
+}
+
+.StepDotDone .StepDotIcon {
+  background: color-mix(in srgb, var(--dot-color) 20%, transparent);
+  color: var(--dot-color);
+  border-color: color-mix(in srgb, var(--dot-color) 30%, transparent);
+}
+
+.StepDotLabel {
+  font-size: .65rem;
+  font-weight: 600;
+  color: var(--ColorTextMuted);
+  transition: color .3s ease;
+}
+
+.StepDotActive .StepDotLabel {
+  color: var(--ColorText)
+}
+
+.StepDotDone .StepDotLabel {
+  color: var(--ColorTextSub)
+}
+
+
+.Viewport {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.Slide {
+  position: absolute;
+  inset: 0;
+  padding: 20px 24px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: transform .4s cubic-bezier(.2, .9, .25, 1), opacity .3s ease;
+  will-change: transform, opacity;
+}
+
+.Slide::-webkit-scrollbar {
+  width: 4px
+}
+
+.Slide::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, .15);
+  border-radius: 3px
 }
 
 .Left {
-    transform: translate3d(-110%, 0, 0) scale(.98);
-    opacity: 0;
-    filter: blur(1px) saturate(.95);
-    pointer-events: none;
+  transform: translateX(-110%);
+  opacity: 0;
+  pointer-events: none
 }
 
 .Right {
-    transform: translate3d(110%, 0, 0) scale(.98);
-    opacity: 0;
-    filter: blur(1px) saturate(.95);
-    pointer-events: none;
+  transform: translateX(110%);
+  opacity: 0;
+  pointer-events: none
 }
 
 .Center {
-    transform: translate3d(0, 0, 0) scale(1);
-    opacity: 1;
-    pointer-events: all;
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: all
+}
+
+
+.StepInner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px
+}
+
+.StepHeader {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 4px
+}
+
+.StepIconBadge {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .15);
+}
+
+.StepTitle {
+  font-size: .95rem;
+  font-weight: 700;
+  color: var(--ColorText);
+  letter-spacing: .2px
+}
+
+.StepDesc {
+  font-size: .75rem;
+  color: var(--ColorTextMuted);
+  margin-top: 2px
+}
+
+
+.ModeCards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px
+}
+
+.ModeCard {
+  background: var(--CardBg);
+  border: 1px solid var(--CardBorder);
+  border-radius: 14px;
+  padding: 18px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all .25s ease;
+  text-align: center;
+}
+
+.ModeCard:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .12);
+  transform: translateY(-2px)
+}
+
+.ModeCardActive {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+.ModeCardIcon {
+  font-size: 1.6rem;
+  color: var(--ColorTextSub)
+}
+
+.ModeCardActive .ModeCardIcon {
+  color: var(--accent)
+}
+
+.ModeCardLabel {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--ColorText)
+}
+
+.ModeCardDesc {
+  font-size: .7rem;
+  color: var(--ColorTextMuted)
+}
+
+
+.InputCard {
+  background: var(--CardBg);
+  border: 1px solid var(--CardBorder);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeSlide .3s ease;
+}
+
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(8px)
+  }
+}
+
+.InputCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ColorText);
+}
+
+.InputRow {
+  display: flex;
+  gap: 8px
+}
+
+.InputWrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--InputBg);
+  border: 1px solid var(--InputBorder);
+  border-radius: 10px;
+  padding: 10px 12px;
+  transition: all .2s ease;
+}
+
+.InputWrapper:focus-within {
+  border-color: var(--InputBorderFocus);
+  background: var(--InputBgFocus);
+  box-shadow: 0 0 0 3px var(--InputRing);
+}
+
+.InputPrefix {
+  font-size: .8rem;
+  color: var(--ColorTextMuted);
+  white-space: nowrap
 }
 
 .Input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ColorText);
+  font-size: .9rem;
+  font-family: monospace;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.Input::placeholder {
+  color: var(--ColorTextMuted)
+}
+
+.BtnConnect {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s ease;
+  flex-shrink: 0;
+}
+
+.BtnConnect:hover {
+  box-shadow: 0 4px 14px rgba(59, 130, 246, .35)
+}
+
+.BtnConnect:active {
+  transform: scale(.93)
+}
+
+.BtnConnect:disabled {
+  opacity: .5;
+  cursor: not-allowed
+}
+
+
+.StatusBanner {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  animation: fadeSlide .3s ease;
+}
+
+.StatusLoading {
+  background: color-mix(in srgb, #3b82f6 8%, transparent);
+  border: 1px solid color-mix(in srgb, #3b82f6 20%, transparent);
+  color: #60a5fa;
+}
+
+.StatusSuccess {
+  background: color-mix(in srgb, #10b981 8%, transparent);
+  border: 1px solid color-mix(in srgb, #10b981 20%, transparent);
+  color: #34d399;
+}
+
+.StatusError {
+  background: color-mix(in srgb, #ef4444 8%, transparent);
+  border: 1px solid color-mix(in srgb, #ef4444 20%, transparent);
+  color: #f87171;
+}
+
+.StatusNeutral {
+  background: var(--CardBgSolid);
+  border: 1px solid var(--CardBorder);
+  color: var(--ColorTextSub);
+}
+
+.StatusIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  margin-top: 1px
+}
+
+.StatusText {
+  font-size: .82rem;
+  font-weight: 600;
+  line-height: 1.5
+}
+
+.StatusMeta {
+  display: block;
+  font-size: .72rem;
+  font-weight: 500;
+  opacity: .7;
+  margin-top: 2px
+}
+
+
+.BtnAction {
+  width: 100%;
+  padding: 13px 18px;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent, #3b82f6);
+  color: #fff;
+  font-size: .88rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--accent, #3b82f6) 30%, transparent);
+}
+
+.BtnAction:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px)
+}
+
+.BtnAction:active {
+  transform: scale(.97)
+}
+
+.BtnAction:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+  transform: none
+}
+
+
+.ScanAnimation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 120px;
+  position: relative;
+}
+
+.ScanRing {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, .3);
+  animation: scanPulse 1.8s ease-out infinite;
+}
+
+@keyframes scanPulse {
+  from {
+    transform: scale(.3);
+    opacity: 1
+  }
+
+  to {
+    transform: scale(2);
+    opacity: 0
+  }
+}
+
+.ScanCenter {
+  font-size: 1.6rem;
+  color: #8b5cf6;
+  z-index: 1
+}
+
+
+.NodesGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px
+}
+
+.NodesCount {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--ColorTextSub);
+  padding: 0 2px
+}
+
+.NodeCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--CardBg);
+  border: 1px solid var(--CardBorder);
+  border-radius: 12px;
+  padding: 10px 12px;
+  animation: nodeIn .3s ease backwards;
+}
+
+@keyframes nodeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px)
+  }
+}
+
+.NodeCardIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: color-mix(in srgb, #8b5cf6 12%, transparent);
+  color: #8b5cf6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .95rem;
+  flex-shrink: 0;
+}
+
+.NodeCardInfo {
+  flex: 1;
+  min-width: 0
+}
+
+.NodeCardId {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--ColorText)
+}
+
+.NodeCardMeta {
+  font-size: .7rem;
+  color: var(--ColorTextMuted);
+  margin-top: 1px
+}
+
+.NodeCardDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: #10b981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, .4);
+}
+
+
+.EmptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.EmptyIcon {
+  font-size: 2rem;
+  color: var(--ColorTextMuted)
+}
+
+.EmptyTitle {
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--ColorText)
+}
+
+.EmptyDesc {
+  font-size: .78rem;
+  color: var(--ColorTextMuted);
+  max-width: 260px
+}
+
+
+.RegisterInfo {
+  display: flex;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, #f59e0b 6%, transparent);
+  border: 1px solid color-mix(in srgb, #f59e0b 15%, transparent);
+}
+
+.RegisterInfoIcon {
+  font-size: 1.1rem;
+  flex-shrink: 0
+}
+
+.RegisterInfoText {
+  font-size: .78rem;
+  color: var(--ColorTextSub);
+  line-height: 1.5;
+  font-weight: 500
+}
+
+
+.TimerBar {
+  height: 4px;
+  border-radius: 3px;
+  background: var(--CardBgSolid);
+  overflow: hidden;
+}
+
+.TimerProgress {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #f59e0b, #f97316);
+  transition: width 1s linear;
+}
+
+
+.VerifySteps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px
+}
+
+.VerifyStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--ColorText);
+}
+
+.VerifyStepPending {
+  opacity: .3
+}
+
+.VerifyResults {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: fadeSlide .3s ease
+}
+
+.VerifyGrid {
+  display: flex;
+  
+  gap: 8px
+}
+
+.VerifyCard {
+  background: var(--CardBg);
+  border: 1px solid var(--CardBorder);
+  border-radius: 12px;
+  padding: 14px 10px;
+  text-align: center;
+  flex:1;
+}
+
+.VerifyCardValue {
+  font-size: 1.4rem;
+  font-weight: 800
+}
+
+.VerifyCardLabel {
+  font-size: .7rem;
+  color: var(--ColorTextMuted);
+  margin-top: 4px;
+  font-weight: 600
+}
+
+
+.DataPreview {
+  background: var(--CardBg);
+  border: 1px solid var(--CardBorder);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.DataPreviewTitle {
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--ColorTextSub);
+  margin-bottom: 2px;
+}
+
+.DataList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.DataRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: var(--CardBgSolid);
+  border: 1px solid var(--CardBorder);
+  border-radius: 10px;
+  transition: transform 0.2s ease;
+}
+
+.DataRow:hover {
+  transform: translateX(4px);
+  background: var(--CardBgHover);
+}
+
+.DataRowMain {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.DataRowId {
+  font-family: monospace;
+  font-weight: 800;
+  font-size: .85rem;
+  color: var(--ColorText);
+  background: color-mix(in srgb, var(--accent, #3b82f6) 15%, transparent);
+  padding: 2px 6px;
+  border-radius: 5px;
+}
+
+.DataRowValues {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.DataValueItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.DataIcon {
+  font-size: .95rem;
+}
+
+.DataValueText {
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--ColorText);
+}
+
+
+.Footer {
+  padding: 14px 24px 18px;
+  border-top: 1px solid var(--CardBorder);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  gap: 12px;
+}
+
+.FooterDots {
+  display: flex;
+  gap: 6px;
+  align-items: center
+}
+
+.Dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--CardBgSolid);
+  border: 1px solid var(--CardBorder);
+  transition: all .3s ease;
+}
+
+.DotActive {
+  width: 18px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  border-color: transparent;
+}
+
+.DotDone {
+  background: color-mix(in srgb, #10b981 40%, transparent);
+  border-color: transparent;
+}
+
+.BtnSecondary {
+  padding: 10px 16px;
+  border-radius: 11px;
+  border: 1px solid var(--CardBorder);
+  background: var(--CardBgSolid);
+  color: var(--ColorText);
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .2s ease;
+  opacity: 0;
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.BtnVisible {
+  opacity: 1;
+  width: auto;
+  padding: 10px 16px
+}
+
+.BtnSecondary:hover {
+  background: var(--CardBgHover)
+}
+
+.BtnSecondary:active {
+  transform: scale(.95)
+}
+
+.BtnPrimary {
+  padding: 10px 20px;
+  border-radius: 11px;
+  border: none;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px rgba(59, 130, 246, .3);
+}
+
+.BtnPrimary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px)
+}
+
+.BtnPrimary:active {
+  transform: scale(.96)
+}
+
+.BtnPrimary:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none;
+  filter: none
+}
+
+.BtnFinish {
+  padding: 10px 22px;
+  border-radius: 11px;
+  border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .2s ease;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, .3);
+}
+
+.BtnFinish:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px)
+}
+
+.BtnFinish:active {
+  transform: scale(.96)
+}
+
+
+.Spin {
+  animation: spin .8s linear infinite
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+
+@media (max-width:560px) {
+  .Modal {
     width: 100%;
-    padding: 10px 14px;
-    border-radius: 14px;
-    border: none;
-    outline: none;
-    background: rgba(255, 255, 255, 0.08);
-    color: var(--ColorText);
-    font-size: 0.95rem;
-    backdrop-filter: blur(8px);
-    margin-top: 6px;
-}
+    max-width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0
+  }
 
-.FieldLabel {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    font-weight: 600;
-    color: var(--ColorText);
-}
+  .ModeCards {
+    grid-template-columns: 1fr
+  }
 
-.CheckboxLabel {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
+  .VerifyGrid {
+    grid-template-columns: 1fr
+  }
 
-.ThemeButtons {
-    display: flex;
-    gap: 10px;
-}
-
-
-.ThemeBtn {
-    flex: 1;
-    padding: 10px 14px;
-    border-radius: 12px;
-    border: none;
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--ColorText);
-    font-weight: 600;
-    cursor: pointer;
-    text-align: center;
-    transition: transform 220ms ease, box-shadow 220ms ease;
-}
-
-.ActiveBtn {
-    background: linear-gradient(135deg, rgba(120, 150, 255, 0.95), rgba(95, 125, 255, 0.95));
-    color: #fff;
-    box-shadow: 0 8px 24px rgba(95, 125, 255, 0.18), 0 2px 6px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
-}
-
-.ButtonRow {
-    display: flex;
-    justify-content: space-around;
-    gap: 12px;
-
-    align-items: center;
-}
-
-.LeftControls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 50px;
-}
-
-.RightControls {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    width: 50px;
-
-}
-
-.PrimaryBtn {
-    /* padding: 10px 16px; */
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-.PrimaryBtn:active {
-    transform: translateY(1px);
-}
-
-.SecondaryBtn {
-    /* padding: 8px 14px; */
-    background: none;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 700;
-    transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-.SaveBtn {
-    padding: 10px 16px;
-    border-radius: 14px;
-    border: none;
-    background: linear-gradient(90deg, #2ecc71, #27ae60);
-    color: #fff;
-    font-weight: 700;
-}
-
-.LinkBtn {
-    background: none;
-    border: none;
-    color: #80a0ff;
-    cursor: pointer;
-    text-decoration: underline;
-    font-size: 0.9rem;
-    margin-top: 6px;
-}
-
-.HubList {
-    list-style: none;
-    padding: 0;
-    margin: 6px 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.HubBtn {
-    padding: 8px 12px;
-    border-radius: 14px;
-    border: none;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--ColorText);
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.HubBtn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.StepInner {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.SectionTitle {
-    font-weight: 700;
-    color: var(--ColorText);
-    margin-bottom: 6px;
-}
-
-.CheckboxLabel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.02);
-    padding: 8px 10px;
-    border-radius: 10px;
-}
-
-.CheckboxText {
-    font-weight: 600;
-    color: var(--ColorText);
-}
-
-.Helper {
-    margin-top: 8px;
-    color: rgba(255, 255, 255, 0.65);
-    font-size: 0.9rem;
+  .StepDotLabel {
+    display: none
+  }
 }

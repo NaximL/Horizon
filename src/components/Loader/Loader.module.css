@@ -1,0 +1,46 @@
+
+
+.EmptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: calc(100vw - 64px);
+    height: 100vh;
+    margin-left: 64px;
+    background: radial-gradient(circle at center, var(--BlurViewBack) 0%, transparent 80%);
+    color: var(--ColorText);
+    text-align: center;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.EmptyIcon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+    color: var(--ChartLine);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.EmptyTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.EmptyText {
+    font-size: 1rem;
+    color: var(--ColorTextSub);
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.05); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0.3; }
+}

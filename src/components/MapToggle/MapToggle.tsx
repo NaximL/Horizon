@@ -1,4 +1,6 @@
+import React from "react";
 import styles from "./MapToggle.module.css";
+import { RiBox3Line, RiMap2Line } from "react-icons/ri";
 
 type Props = {
   mode: "3d" | "google";
@@ -7,19 +9,19 @@ type Props = {
 
 const MapToggle = ({ mode, setMode }: Props) => {
   return (
-    <div className={`${styles.ToggleWrapper} BlurView`}>
+    <div className={styles.ToggleWrapper}>
       <div
         className={`${styles.ToggleBtn} ${mode === "3d" ? styles.Active : ""}`}
         onClick={() => setMode("3d")}
       >
-        🌐 3D
+        <RiBox3Line size={16} /> 3D
       </div>
 
       <div
         className={`${styles.ToggleBtn} ${mode === "google" ? styles.Active : ""}`}
         onClick={() => setMode("google")}
       >
-        🗺 Maps
+        <RiMap2Line size={16} /> Карта
       </div>
 
       <div

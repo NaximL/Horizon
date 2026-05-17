@@ -1,54 +1,59 @@
 .ToggleWrapper {
     position: fixed;
-    top: 80px;
+    top: 74px; 
     right: 20px;
     display: flex;
     align-items: center;
-    width: 180px;
-    height: 43px;
-    /* padding: 4px; */
-
+    width: 160px;
+    height: 40px;
     padding: 4px;
-    border-radius: 40px;
-    /* background: rgba(255, 255, 255, 0.07); */
-    /* backdrop-filter: blur(12px); */
-    /* box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.25); */
-    z-index: 2;
+    border-radius: 20px;
+    background: var(--BlurViewBack);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--CardBorder);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    box-sizing: border-box;
 }
 
 .ToggleBtn {
     flex: 1;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: 100%;
     z-index: 2;
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--ColorText);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--ColorTextMuted);
     cursor: pointer;
     user-select: none;
-    transition: color 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .ToggleBtn:hover {
-    color: var(--ColorActive);
+    color: var(--ColorTextSub);
 }
 
 .Active {
-    color: rgb(255, 255, 255);
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .Slider {
     position: absolute;
-    width: 50%;
-    height: 85%;
-    border-radius: 30px;
-
-    background: linear-gradient(135deg,
-            rgba(120, 150, 180, 0.8),
-            rgba(95, 125, 160, 0.85));
-
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6px);
-    transition: transform 0.3s ease;
+    top:3px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 1;
 }
 
 .Left {
@@ -56,5 +61,5 @@
 }
 
 .Right {
-    transform: translateX(90%);
+    transform: translateX(95%);
 }

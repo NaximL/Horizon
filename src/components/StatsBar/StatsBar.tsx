@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./StatsBar.module.css";
-
+import { RiRefreshLine } from "react-icons/ri";
 
 type Props = {
   Connection: boolean;
@@ -10,28 +10,26 @@ type Props = {
 };
 
 const StatsBar = ({ Connection, IP, bind, OnRefresh }: Props) => {
-
   return (
-    <div className={`${styles.StatsBar} BlurView`}>
-      <div
-        id="bubble"
-        className={`${styles.BubbleClose} BlurView`}
-        onClick={() => {
-          OnRefresh();
-        }}
-        aria-label="close menu"
-      >
-        <span>🔄️</span>
-      </div>
-
+    <div className={styles.StatsBar}>
+      <div 
+        className={`${styles.StatusIndicator} ${
+          bind ? styles.StatusBind : Connection ? styles.StatusOnline : styles.StatusOffline
+        }`} 
+        title={bind ? "Режим приєднання..." : Connection ? "Підключено" : "Немає підключення"}
+      />
       
-      <div className={`${styles.NavItem} ColorText`}>
-        <span>{bind ? "Бинд нових сенсорів..." : Connection ? `${IP}` : "Немає підключення"}</span>
+      <div className={styles.IpText}>
+        {bind ? "BIND MODE" : IP}
       </div>
 
-      <div className={`${styles.NavItem} ColorText`}>
-        <span>Статус: {bind ? "🔄 " : Connection ? "✅" : "❌"}</span>
-      </div>
+      <button
+        className={styles.RefreshBtn}
+        onClick={OnRefresh}
+        title="Оновити з'єднання"
+      >
+        <RiRefreshLine size={18} />
+      </button>
     </div>
   );
 };

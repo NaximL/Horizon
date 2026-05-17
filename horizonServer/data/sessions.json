@@ -1,0 +1,812 @@
+[
+  {
+    "id": "1746518400000",
+    "title": "Дослідження від 02.05.2026",
+    "interval": 1200,
+    "status": "completed",
+    "startTime": "2026-05-02T07:00:00.000Z",
+    "endTime": "2026-05-02T14:20:00.000Z",
+    "dataPoints": [
+      {
+        "timestamp": "2026-05-02T07:00:00.000Z",
+        "uptime": 0,
+        "active": 2,
+        "temp": 9.8,
+        "humidity": 78,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T07:20:00.000Z",
+        "uptime": 1200,
+        "active": 2,
+        "temp": 10.2,
+        "humidity": 77,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T07:40:00.000Z",
+        "uptime": 2400,
+        "active": 2,
+        "temp": 10.6,
+        "humidity": 76,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T08:00:00.000Z",
+        "uptime": 3600,
+        "active": 2,
+        "temp": 11.1,
+        "humidity": 75,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T08:20:00.000Z",
+        "uptime": 4800,
+        "active": 2,
+        "temp": 11.5,
+        "humidity": 75,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T08:40:00.000Z",
+        "uptime": 6000,
+        "active": 2,
+        "temp": 11.9,
+        "humidity": 74,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T09:00:00.000Z",
+        "uptime": 7200,
+        "active": 2,
+        "temp": 12.3,
+        "humidity": 73,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T09:20:00.000Z",
+        "uptime": 8400,
+        "active": 2,
+        "temp": 12.7,
+        "humidity": 72,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 8 },
+          { "id": 3, "status": 16 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T09:40:00.000Z",
+        "uptime": 9600,
+        "active": 2,
+        "temp": 13.0,
+        "humidity": 71,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 8 },
+          { "id": 3, "status": 16 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T10:00:00.000Z",
+        "uptime": 10800,
+        "active": 2,
+        "temp": 13.2,
+        "humidity": 71,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T10:20:00.000Z",
+        "uptime": 12000,
+        "active": 2,
+        "temp": 13.5,
+        "humidity": 70,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T10:40:00.000Z",
+        "uptime": 13200,
+        "active": 2,
+        "temp": 13.1,
+        "humidity": 70,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T11:00:00.000Z",
+        "uptime": 14400,
+        "active": 2,
+        "temp": 12.8,
+        "humidity": 69,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T11:20:00.000Z",
+        "uptime": 15600,
+        "active": 2,
+        "temp": 12.5,
+        "humidity": 68,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T11:40:00.000Z",
+        "uptime": 16800,
+        "active": 2,
+        "temp": 12.3,
+        "humidity": 68,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T12:00:00.000Z",
+        "uptime": 18000,
+        "active": 2,
+        "temp": 12.0,
+        "humidity": 67,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T12:20:00.000Z",
+        "uptime": 19200,
+        "active": 2,
+        "temp": 11.8,
+        "humidity": 67,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T12:40:00.000Z",
+        "uptime": 20400,
+        "active": 2,
+        "temp": 11.6,
+        "humidity": 66,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T13:00:00.000Z",
+        "uptime": 21600,
+        "active": 2,
+        "temp": 11.3,
+        "humidity": 66,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T13:20:00.000Z",
+        "uptime": 22800,
+        "active": 2,
+        "temp": 11.1,
+        "humidity": 65,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T13:40:00.000Z",
+        "uptime": 24000,
+        "active": 2,
+        "temp": 10.9,
+        "humidity": 65,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T14:00:00.000Z",
+        "uptime": 25200,
+        "active": 2,
+        "temp": 10.7,
+        "humidity": 64,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-02T14:20:00.000Z",
+        "uptime": 26400,
+        "active": 2,
+        "temp": 10.5,
+        "humidity": 64,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1747036800000",
+    "title": "Дослідження від 12.05.2026",
+    "interval": 1200,
+    "status": "completed",
+    "startTime": "2026-05-12T10:40:00.000Z",
+    "endTime": "2026-05-12T13:40:00.000Z",
+    "dataPoints": [
+      {
+        "timestamp": "2026-05-12T10:40:00.000Z",
+        "uptime": 0,
+        "active": 2,
+        "temp": 15.2,
+        "humidity": 61,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T11:00:00.000Z",
+        "uptime": 1200,
+        "active": 2,
+        "temp": 15.7,
+        "humidity": 60,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T11:20:00.000Z",
+        "uptime": 2400,
+        "active": 2,
+        "temp": 16.2,
+        "humidity": 59,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T11:40:00.000Z",
+        "uptime": 3600,
+        "active": 2,
+        "temp": 16.6,
+        "humidity": 59,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T12:00:00.000Z",
+        "uptime": 4800,
+        "active": 2,
+        "temp": 16.9,
+        "humidity": 58,
+        "signals": 3,
+        "nodes": [
+          { "id": 2, "status": 8 },
+          { "id": 3, "status": 16 },
+          { "id": 4, "status": 24 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T12:20:00.000Z",
+        "uptime": 6000,
+        "active": 2,
+        "temp": 16.5,
+        "humidity": 58,
+        "signals": 3,
+        "nodes": [
+          { "id": 2, "status": 8 },
+          { "id": 3, "status": 16 },
+          { "id": 4, "status": 24 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T12:40:00.000Z",
+        "uptime": 7200,
+        "active": 2,
+        "temp": 16.1,
+        "humidity": 57,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T13:00:00.000Z",
+        "uptime": 8400,
+        "active": 2,
+        "temp": 15.7,
+        "humidity": 57,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 8 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T13:20:00.000Z",
+        "uptime": 9600,
+        "active": 2,
+        "temp": 15.3,
+        "humidity": 56,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-12T13:40:00.000Z",
+        "uptime": 10800,
+        "active": 2,
+        "temp": 14.9,
+        "humidity": 56,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "1747382400000",
+    "title": "Дослідження від 16.05.2026",
+    "interval": 1200,
+    "status": "completed",
+    "startTime": "2026-05-16T08:20:00.000Z",
+    "endTime": "2026-05-16T17:00:00.000Z",
+    "dataPoints": [
+      {
+        "timestamp": "2026-05-16T08:20:00.000Z",
+        "uptime": 0,
+        "active": 2,
+        "temp": 13.4,
+        "humidity": 66,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T08:40:00.000Z",
+        "uptime": 1200,
+        "active": 2,
+        "temp": 13.9,
+        "humidity": 65,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T09:00:00.000Z",
+        "uptime": 2400,
+        "active": 2,
+        "temp": 14.5,
+        "humidity": 64,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T09:20:00.000Z",
+        "uptime": 3600,
+        "active": 2,
+        "temp": 15.1,
+        "humidity": 63,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T09:40:00.000Z",
+        "uptime": 4800,
+        "active": 2,
+        "temp": 15.7,
+        "humidity": 62,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T10:00:00.000Z",
+        "uptime": 6000,
+        "active": 2,
+        "temp": 16.3,
+        "humidity": 61,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T10:20:00.000Z",
+        "uptime": 7200,
+        "active": 2,
+        "temp": 16.8,
+        "humidity": 60,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T10:40:00.000Z",
+        "uptime": 8400,
+        "active": 2,
+        "temp": 17.2,
+        "humidity": 59,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 8 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T11:00:00.000Z",
+        "uptime": 9600,
+        "active": 2,
+        "temp": 17.6,
+        "humidity": 58,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 8 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T11:20:00.000Z",
+        "uptime": 10800,
+        "active": 2,
+        "temp": 17.9,
+        "humidity": 57,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T11:40:00.000Z",
+        "uptime": 12000,
+        "active": 2,
+        "temp": 18.2,
+        "humidity": 57,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T12:00:00.000Z",
+        "uptime": 13200,
+        "active": 2,
+        "temp": 18.5,
+        "humidity": 56,
+        "signals": 3,
+        "nodes": [
+          { "id": 2, "status": 16 },
+          { "id": 3, "status": 24 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T12:20:00.000Z",
+        "uptime": 14400,
+        "active": 2,
+        "temp": 18.7,
+        "humidity": 55,
+        "signals": 3,
+        "nodes": [
+          { "id": 2, "status": 16 },
+          { "id": 3, "status": 24 },
+          { "id": 4, "status": 16 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T12:40:00.000Z",
+        "uptime": 15600,
+        "active": 2,
+        "temp": 18.4,
+        "humidity": 55,
+        "signals": 2,
+        "nodes": [
+          { "id": 2, "status": 8 },
+          { "id": 3, "status": 16 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T13:00:00.000Z",
+        "uptime": 16800,
+        "active": 2,
+        "temp": 18.1,
+        "humidity": 54,
+        "signals": 1,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 8 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T13:20:00.000Z",
+        "uptime": 18000,
+        "active": 2,
+        "temp": 17.8,
+        "humidity": 54,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T13:40:00.000Z",
+        "uptime": 19200,
+        "active": 2,
+        "temp": 17.5,
+        "humidity": 53,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T14:00:00.000Z",
+        "uptime": 20400,
+        "active": 2,
+        "temp": 17.2,
+        "humidity": 53,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T14:20:00.000Z",
+        "uptime": 21600,
+        "active": 2,
+        "temp": 16.9,
+        "humidity": 52,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T14:40:00.000Z",
+        "uptime": 22800,
+        "active": 2,
+        "temp": 16.6,
+        "humidity": 52,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T15:00:00.000Z",
+        "uptime": 24000,
+        "active": 2,
+        "temp": 16.3,
+        "humidity": 51,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T15:20:00.000Z",
+        "uptime": 25200,
+        "active": 2,
+        "temp": 16.0,
+        "humidity": 51,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T15:40:00.000Z",
+        "uptime": 26400,
+        "active": 2,
+        "temp": 15.7,
+        "humidity": 50,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T16:00:00.000Z",
+        "uptime": 27600,
+        "active": 2,
+        "temp": 15.4,
+        "humidity": 50,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T16:20:00.000Z",
+        "uptime": 28800,
+        "active": 2,
+        "temp": 15.1,
+        "humidity": 49,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T16:40:00.000Z",
+        "uptime": 30000,
+        "active": 2,
+        "temp": 14.8,
+        "humidity": 49,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      },
+      {
+        "timestamp": "2026-05-16T17:00:00.000Z",
+        "uptime": 31200,
+        "active": 2,
+        "temp": 14.5,
+        "humidity": 48,
+        "signals": 0,
+        "nodes": [
+          { "id": 2, "status": 0 },
+          { "id": 3, "status": 0 },
+          { "id": 4, "status": 0 }
+        ]
+      }
+    ]
+  }
+]

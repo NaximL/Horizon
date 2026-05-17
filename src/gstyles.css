@@ -1,49 +1,282 @@
-/*Світла тема*/
+
 :root {
-    --BlurViewBack: #fff;
+    --BlurViewBack: rgba(255, 255, 255, 0.85);
     --BlurViewBackWhite: rgba(255, 255, 255, 0.005);
     --ColorText: #222222;
+    --ColorTextSub: rgba(60, 60, 60, 0.6);
+    --ColorTextMuted: rgba(60, 60, 60, 0.4);
     --ColorActive: #b3b3b3;
     --ColorActiveBlue: linear-gradient(135deg,
             rgba(120, 150, 180, 0.8),
             rgba(95, 125, 160, 0.85));
 
+    
+    --CardBg: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
+    --CardBorder: rgba(0, 0, 0, 0.06);
+    --CardBgSolid: rgba(0, 0, 0, 0.03);
+    --CardBgHover: rgba(0, 0, 0, 0.05);
 
+    
+    --InputBg: rgba(0, 0, 0, 0.04);
+    --InputBgFocus: rgba(0, 0, 0, 0.06);
+    --InputBorder: rgba(0, 0, 0, 0.08);
+    --InputBorderFocus: rgba(110, 145, 180, 0.5);
+    --InputRing: rgba(110, 145, 180, 0.12);
+
+    
+    --SegBg: rgba(0, 0, 0, 0.06);
+    --SegBtnHoverBg: rgba(0, 0, 0, 0.04);
+    --SegBtnHoverBorder: rgba(0, 0, 0, 0.08);
+    --SegBtnColor: rgba(60, 60, 60, 0.5);
+    --SegBtnHoverColor: rgba(30, 30, 30, 0.7);
+    --SegBtnActiveBg: linear-gradient(135deg, rgba(110, 145, 180, 0.85), rgba(85, 120, 160, 0.8));
+    --SegBtnActiveBorder: rgba(150, 185, 220, 0.35);
+    --SegBtnActiveColor: #fff;
+    --SegBtnActiveShadow: 0 2px 10px rgba(110, 145, 180, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    
+    --BtnResetBg: rgba(0, 0, 0, 0.04);
+    --BtnResetBorder: rgba(0, 0, 0, 0.08);
+    --BtnResetColor: rgba(60, 60, 60, 0.5);
+    --BtnResetHoverBg: rgba(0, 0, 0, 0.07);
+    --BtnResetHoverColor: rgba(30, 30, 30, 0.7);
+    --BtnResetHoverBorder: rgba(0, 0, 0, 0.12);
+
+    
+    --ChartLine: #5a7fa0;
+    --ChartFillTop: rgba(90, 127, 160, 0.35);
+    --ChartFillBottom: rgba(90, 127, 160, 0.0);
+    --ChartDotFill: #fff;
+    --ChartDotStroke: #5a7fa0;
+    --ChartGrid: rgba(0, 0, 0, 0.05);
+    --ChartBadgeBg: rgba(90, 127, 160, 0.85);
+
+    
+    --NavbarBg: rgba(255, 255, 255, 0.75);
+    --NavbarShadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    --NavBlobBg: rgba(0, 0, 0, 0.06);
+    --NavIconColor: rgba(60, 60, 60, 0.4);
+    --NavIconActiveColor: #333;
+    --NavLabelColor: rgba(60, 60, 60, 0.45);
+    --NavLabelActiveColor: #333;
+    --NavIconGlow: none;
+
+    
+    --StatsBarBg: rgba(255, 255, 255, 0.8);
+
+    
+    --BatteryTrackBg: rgba(0, 0, 0, 0.06);
 }
-
-/*#18a3db;*/
 
 body {
     background-color: #f7f7fa;
     color: var(--ColorText);
     font-family: "Montserrat", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.shine {
+    box-shadow:
+        inset -1px 1px 0 rgba(255, 255, 255, 0.12),
+        inset 1px -1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.shine-bold {
+    box-shadow:
+        inset -1.3px 1.3px 0 rgba(255, 255, 255, 0.3),
+        inset 1.3px -1.3px 0 rgba(255, 255, 255, 0.3),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+    position: fixed;
+    right: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
 }
 
 .BlurView {
     background-color: var(--BlurViewBack);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     z-index: 2;
-    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.1);
 }
 
 .ColorText {
     color: var(--ColorText);
 }
 
-@media (prefers-color-scheme: dark) {
 
-    /*Темна тема*/
+@media (prefers-color-scheme: dark) {
     :root {
-        --BlurViewBack: #1C1C1E;
+        --BlurViewBack: rgba(28, 28, 30, 0.85);
         --BlurViewBackWhite: rgba(28, 28, 30, 0.4);
         --ColorText: #eaeaea;
+        --ColorTextSub: rgba(255, 255, 255, 0.5);
+        --ColorTextMuted: rgba(255, 255, 255, 0.3);
+
+        --CardBg: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+        --CardBorder: rgba(255, 255, 255, 0.06);
+        --CardBgSolid: rgb(34 34 34);
+        --CardBgHover: rgba(255, 255, 255, 0.06);
+
+        --InputBg: rgba(0, 0, 0, 0.2);
+        --InputBgFocus: rgba(255, 255, 255, 0.08);
+        --InputBorder: rgba(255, 255, 255, 0.06);
+        --InputBorderFocus: rgba(110, 145, 180, 0.5);
+        --InputRing: rgba(110, 145, 180, 0.12);
+
+        --SegBg: rgba(0, 0, 0, 0.25);
+        --SegBtnHoverBg: rgba(255, 255, 255, 0.06);
+        --SegBtnHoverBorder: rgba(255, 255, 255, 0.08);
+        --SegBtnColor: rgba(255, 255, 255, 0.35);
+        --SegBtnHoverColor: rgba(255, 255, 255, 0.65);
+        --SegBtnActiveBg: linear-gradient(135deg, rgba(110, 145, 180, 0.8), rgba(85, 120, 160, 0.75));
+        --SegBtnActiveBorder: rgba(150, 185, 220, 0.3);
+        --SegBtnActiveColor: #fff;
+        --SegBtnActiveShadow: 0 2px 10px rgba(110, 145, 180, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+
+        --BtnResetBg: rgba(255, 255, 255, 0.04);
+        --BtnResetBorder: rgba(255, 255, 255, 0.06);
+        --BtnResetColor: rgba(255, 255, 255, 0.4);
+        --BtnResetHoverBg: rgba(255, 255, 255, 0.08);
+        --BtnResetHoverColor: rgba(255, 255, 255, 0.65);
+        --BtnResetHoverBorder: rgba(255, 255, 255, 0.12);
+
+        --ChartLine: #6E91B4;
+        --ChartFillTop: rgba(110, 145, 180, 0.45);
+        --ChartFillBottom: rgba(110, 145, 180, 0.0);
+        --ChartDotFill: #1a1a2e;
+        --ChartDotStroke: #6E91B4;
+        --ChartGrid: rgba(255, 255, 255, 0.04);
+        --ChartBadgeBg: rgba(110, 145, 180, 0.85);
+
+        --NavbarBg: rgba(88, 93, 97, 0.22);
+        --NavbarShadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+        --NavBlobBg: rgba(255, 255, 255, 0.15);
+        --NavIconColor: rgba(255, 255, 255, 0.45);
+        --NavIconActiveColor: #fff;
+        --NavLabelColor: rgba(255, 255, 255, 0.45);
+        --NavLabelActiveColor: #fff;
+        --NavIconGlow: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+
+        --StatsBarBg: rgba(28, 28, 30, 0.8);
+        --BatteryTrackBg: rgba(255, 255, 255, 0.08);
     }
 
     body {
         background-color: #010101;
-        /* background-image:
-            radial-gradient(circle at 30% 20%, rgba(100, 130, 255, 0.08), transparent 60%),
-            radial-gradient(circle at 80% 70%, rgba(70, 240, 255, 0.05), transparent 60%); */
-        color: var(--ColorText);
     }
+
+    .shine {
+        box-shadow:
+            inset -1px 1px 0 rgba(255, 255, 255, 0.12),
+            inset 1px -1px 0 rgba(255, 255, 255, 0.12),
+            0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+}
+
+
+:root[data-theme="light"] {
+    --BlurViewBack: rgba(255, 255, 255, 0.85);
+    --ColorText: #222222;
+    --ColorTextSub: rgba(60, 60, 60, 0.6);
+    --ColorTextMuted: rgba(60, 60, 60, 0.4);
+    --CardBg: linear-gradient(145deg, rgba(0, 0, 0, 0.03), rgba(0, 0, 0, 0.01));
+    --CardBorder: rgba(0, 0, 0, 0.06);
+    --CardBgSolid: rgba(0, 0, 0, 0.03);
+    --CardBgHover: rgba(0, 0, 0, 0.05);
+    --InputBg: rgba(0, 0, 0, 0.04);
+    --InputBgFocus: rgba(0, 0, 0, 0.06);
+    --InputBorder: rgba(0, 0, 0, 0.08);
+    --InputBorderFocus: rgba(110, 145, 180, 0.5);
+    --InputRing: rgba(110, 145, 180, 0.12);
+    --SegBg: rgba(0, 0, 0, 0.06);
+    --SegBtnHoverBg: rgba(0, 0, 0, 0.04);
+    --SegBtnHoverBorder: rgba(0, 0, 0, 0.08);
+    --SegBtnColor: rgba(60, 60, 60, 0.5);
+    --SegBtnHoverColor: rgba(30, 30, 30, 0.7);
+    --SegBtnActiveBg: linear-gradient(135deg, rgba(110, 145, 180, 0.85), rgba(85, 120, 160, 0.8));
+    --SegBtnActiveBorder: rgba(150, 185, 220, 0.35);
+    --SegBtnActiveColor: #fff;
+    --SegBtnActiveShadow: 0 2px 10px rgba(110, 145, 180, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    --BtnResetBg: rgba(0, 0, 0, 0.04);
+    --BtnResetBorder: rgba(0, 0, 0, 0.08);
+    --BtnResetColor: rgba(60, 60, 60, 0.5);
+    --BtnResetHoverBg: rgba(0, 0, 0, 0.07);
+    --BtnResetHoverColor: rgba(30, 30, 30, 0.7);
+    --BtnResetHoverBorder: rgba(0, 0, 0, 0.12);
+    --ChartLine: #5a7fa0;
+    --ChartFillTop: rgba(90, 127, 160, 0.35);
+    --ChartFillBottom: rgba(90, 127, 160, 0.0);
+    --ChartDotFill: #fff;
+    --ChartDotStroke: #5a7fa0;
+    --ChartGrid: rgba(0, 0, 0, 0.05);
+    --ChartBadgeBg: rgba(90, 127, 160, 0.85);
+    --NavbarBg: rgba(255, 255, 255, 0.75);
+    --NavbarShadow: 0 4px 20px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+    --NavBlobBg: rgba(0, 0, 0, 0.06);
+    --NavIconColor: rgba(60, 60, 60, 0.4);
+    --NavIconActiveColor: #333;
+    --NavLabelColor: rgba(60, 60, 60, 0.45);
+    --NavLabelActiveColor: #333;
+    --NavIconGlow: none;
+    --BatteryTrackBg: rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] {
+    background-color: #f7f7fa;
+}
+
+:root[data-theme="dark"] {
+    --BlurViewBack: rgba(28, 28, 30, 0.85);
+    --ColorText: #eaeaea;
+    --ColorTextSub: rgba(255, 255, 255, 0.5);
+    --ColorTextMuted: rgba(255, 255, 255, 0.3);
+    --CardBg: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.015));
+    --CardBorder: rgba(255, 255, 255, 0.06);
+    --CardBgSolid: rgb(34 34 34);
+    --CardBgHover: rgba(255, 255, 255, 0.06);
+    --InputBg: rgba(0, 0, 0, 0.2);
+    --InputBgFocus: rgba(255, 255, 255, 0.08);
+    --InputBorder: rgba(255, 255, 255, 0.06);
+    --InputBorderFocus: rgba(110, 145, 180, 0.5);
+    --InputRing: rgba(110, 145, 180, 0.12);
+    --SegBg: rgba(0, 0, 0, 0.25);
+    --SegBtnHoverBg: rgba(255, 255, 255, 0.06);
+    --SegBtnHoverBorder: rgba(255, 255, 255, 0.08);
+    --SegBtnColor: rgba(255, 255, 255, 0.35);
+    --SegBtnHoverColor: rgba(255, 255, 255, 0.65);
+    --SegBtnActiveBg: linear-gradient(135deg, rgba(110, 145, 180, 0.8), rgba(85, 120, 160, 0.75));
+    --SegBtnActiveBorder: rgba(150, 185, 220, 0.3);
+    --SegBtnActiveColor: #fff;
+    --SegBtnActiveShadow: 0 2px 10px rgba(110, 145, 180, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    --BtnResetBg: rgba(255, 255, 255, 0.04);
+    --BtnResetBorder: rgba(255, 255, 255, 0.06);
+    --BtnResetColor: rgba(255, 255, 255, 0.4);
+    --BtnResetHoverBg: rgba(255, 255, 255, 0.08);
+    --BtnResetHoverColor: rgba(255, 255, 255, 0.65);
+    --BtnResetHoverBorder: rgba(255, 255, 255, 0.12);
+    --ChartLine: #6E91B4;
+    --ChartFillTop: rgba(110, 145, 180, 0.45);
+    --ChartFillBottom: rgba(110, 145, 180, 0.0);
+    --ChartDotFill: #1a1a2e;
+    --ChartDotStroke: #6E91B4;
+    --ChartGrid: rgba(255, 255, 255, 0.04);
+    --ChartBadgeBg: rgba(110, 145, 180, 0.85);
+    --NavbarBg: rgba(88, 93, 97, 0.22);
+    --NavbarShadow: 0 4px 20px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    --NavBlobBg: rgba(255, 255, 255, 0.15);
+    --NavIconColor: rgba(255, 255, 255, 0.45);
+    --NavIconActiveColor: #fff;
+    --NavLabelColor: rgba(255, 255, 255, 0.45);
+    --NavLabelActiveColor: #fff;
+    --NavIconGlow: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+    --BatteryTrackBg: rgba(255, 255, 255, 0.08);
+}
+
+body[data-theme="dark"] {
+    background-color: #010101;
 }

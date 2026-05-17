@@ -1,6 +1,403 @@
+.Container {
+    position: fixed;
+    top: 0;
+    left: 64px;
+    width: calc(100vw - 64px);
+    height: 100vh;
+}
 
+/* ── GPS Section (inside modal) ──────────────────────── */
+.GpsSection {
+    background: rgba(120, 150, 180, 0.05);
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(120, 150, 180, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
 
-.Modal {
-    background-color: var(--BlurViewBack);
+.GpsSectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.GpsCoordsRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+}
+
+.GpsCoordItem {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.GpsAxisLabel {
+    font-size: 0.55rem;
+    color: var(--ColorTextMuted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.GpsCoordValue {
+    font-size: 0.78rem;
+    font-weight: 700;
     color: var(--ColorText);
+    font-family: monospace;
+    letter-spacing: 0.2px;
+}
+
+.SatsBars {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 22px;
+}
+
+.SatsBar {
+    flex: 1;
+    border-radius: 2px;
+    background: var(--CardBorder);
+    transition: background 0.3s ease, opacity 0.3s ease;
+}
+
+/* ── Hover Modal ─────────────────────────────────────── */
+.Modal {
+    position: fixed;
+    left: 15px;
+    top: 15px;
+    min-width: 220px;
+    background: var(--CardBg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--CardBorder);
+    color: var(--ColorText);
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 13px;
+    pointer-events: none;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+    z-index: 1000;
+    animation: appear 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.Content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.IconWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.IconBox {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: var(--CardBgSolid);
+    color: var(--ColorTextSub);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.HubIconBox {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.2), rgba(76, 175, 80, 0.1));
+    color: #4caf50;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+.Title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ColorText);
+}
+
+.HubTitle {
+    font-weight: 800;
+    font-size: 1.05rem;
+    letter-spacing: 0.5px;
+    color: var(--ColorText);
+}
+
+.Divider {
+    height: 1px;
+    background: var(--CardBorder);
+    margin: 2px 0;
+}
+
+.Label {
+    font-size: 0.65rem;
+    color: var(--ColorTextMuted);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.Value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+.StatsGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.StatItem {
+    display: flex;
+    flex-direction: column;
+    background: rgba(120, 150, 180, 0.05);
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(120, 150, 180, 0.05);
+}
+
+.StatItem .Label {
+    font-size: 0.6rem;
+    margin-bottom: 2px;
+}
+
+.StatValue {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ColorText);
+}
+
+.BatterySection {
+    background: rgba(120, 150, 180, 0.05);
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(120, 150, 180, 0.05);
+}
+
+.BatteryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.BatteryHeader .Label {
+    font-size: 0.6rem;
+    margin-bottom: 0;
+}
+
+.BatteryValue {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.BatteryTrack {
+    height: 6px;
+    border-radius: 3px;
+    background: var(--CardBorder);
+    overflow: hidden;
+}
+
+.BatteryFill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+.MutedText {
+    font-size: 0.8rem;
+    color: var(--ColorTextSub);
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.EmptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, var(--BlurViewBack) 0%, transparent 80%);
+    color: var(--ColorText);
+    text-align: center;
+    padding: 2rem;
+    pointer-events: none;
+}
+
+.EmptyIcon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.4;
+    color: var(--ChartLine);
+    animation: pulse 3s infinite ease-in-out;
+}
+
+.EmptyTitle {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.5px;
+}
+
+.EmptyText {
+    font-size: 1rem;
+    color: var(--ColorTextSub);
+    max-width: 400px;
+    line-height: 1.5;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.3; }
+    50% { transform: scale(1.05); opacity: 0.5; }
+    100% { transform: scale(1); opacity: 0.3; }
+}
+
+/* ── 3D Error Badge ─────────────────────────────────── */
+.ErrorBadge3D {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    background: rgba(20, 24, 33, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    width: max-content;
+    max-width: 180px;
+    font-size: 9px;
+    color: #ffffff;
+    z-index: 50;
+    transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.35s cubic-bezier(0.25, 1, 0.5, 1), transform 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.ErrorBadge3D.Hidden {
+    opacity: 0 !important;
+    transform: scale(0.8) translateY(10px) !important;
+    pointer-events: none;
+}
+
+.ErrorBadge3D.Warning {
+    border-color: rgba(255, 183, 77, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 183, 77, 0.15);
+}
+
+.ErrorBadge3D.Error {
+    border-color: rgba(255, 107, 107, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
+}
+
+.ErrorBadgeItem {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.25;
+}
+
+.ErrorBadgeDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ErrorBadgeDot.Warning {
+    background-color: #ffb74d;
+    box-shadow: 0 0 6px #ffb74d;
+}
+
+.ErrorBadgeDot.Error {
+    background-color: #ff6b6b;
+    box-shadow: 0 0 6px #ff6b6b;
+}
+
+/* ── Hover Modal Problems List ────────────────────────── */
+.StatusNormal {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+.StatusDotNormal {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgb(0, 206, 0);
+    box-shadow: 0 0 6px rgb(0, 206, 0);
+}
+
+.ProblemsList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 4px;
+}
+
+.ProblemItem {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ProblemText {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--ColorText);
+    line-height: 1.25;
+}
+
+.ProblemDot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.ProblemDot.Warning {
+    background-color: #ffb74d;
+    box-shadow: 0 0 6px #ffb74d;
+}
+
+.ProblemDot.Error {
+    background-color: #ff6b6b;
+    box-shadow: 0 0 6px #ff6b6b;
 }
